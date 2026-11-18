@@ -4,41 +4,23 @@ using UnityEngine;
 
 public class ItemController : MonoBehaviour
 {
-    public GameManager gm;
+    public GameObject[] enemyPrefabs;
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-     void OnCollisionEnter(Collision collision)
+    void SpawnRandomCollectable()
     {
-        if(collision.gameObject.tag == "GoodCube")
-        {
-            gm.score += 1;
-            if(collision.gameObject.tag == "Player")
-            {
-                Destroy(gameObject);
-            }         
-
-        }
-
-            if(collision.gameObject.tag == "BadCube")
-        {
-            gm.score -= 1;
-            if(collision.gameObject.tag == "Player")
-            {
-                Destroy(gameObject);
-            }   
-
-        }
-
+        int objectIndex = Random.Range(0, 3);
+        Instantiate(enemyPrefabs[objectIndex]);
 
 
     }
